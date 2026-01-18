@@ -1,0 +1,203 @@
+/* --- TECH DEMO: NEON-DARK THEME --- */
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&family=Fira+Code:wght@400;500&display=swap');
+
+:root {
+    --primary-neon: #00ff88;    /* Electric Green */
+    --bg-dark: #0a0a0c;        /* Deep Carbon */
+    --bg-card: #16161a;        /* Lighter Grey for cards */
+    --text-main: #f8f9fa;
+    --text-muted: #8e8e93;
+    --border-color: rgba(255, 255, 255, 0.1);
+}
+
+body {
+    font-family: 'Inter', sans-serif;
+    background-color: var(--bg-dark);
+    color: var(--text-main);
+    line-height: 1.6;
+}
+
+/* --- REPLACING GARDENING UTILITIES --- */
+.bg-soft-green { background-color: var(--bg-card) !important; } /* Re-purposing gardening class */
+.text-success { color: var(--primary-neon) !important; }
+
+/* Code Font for Tech vibes */
+code, .mono {
+    font-family: 'Fira Code', monospace;
+    color: var(--primary-neon);
+}
+
+/* Glassmorphism for Bento Cards */
+.bento-card {
+    background: var(--bg-card);
+    border: 1px solid var(--border-color) !important;
+    transition: all 0.4s ease;
+}
+
+.bento-card:hover {
+    border-color: var(--primary-neon) !important;
+    box-shadow: 0 0 20px rgba(0, 255, 136, 0.1);
+    transform: translateY(-5px);
+}
+
+/* Button Overwrite */
+.btn-success {
+    background-color: var(--primary-neon);
+    color: #000;
+    font-weight: 700;
+    border: none;
+    border-radius: 4px;
+}
+
+.btn-success:hover {
+    background-color: #00e67a;
+    box-shadow: 0 0 15px rgba(0, 255, 136, 0.3);
+}
+
+/* Tech Grid Borders */
+.border-secondary {
+    border-color: rgba(255, 255, 255, 0.1) !important;
+}
+
+/* Specific Tech Bento adjustments */
+.bg-soft-green {
+    background-color: #0d0d0f !important; /* Slightly lighter than body bg */
+}
+
+.italic {
+    font-family: 'Playfair Display', serif; /* Keeps the high-end boutique feel */
+    font-style: italic;
+}
+
+/* Metric Hover Effect */
+.col-md-4:hover h2 {
+    text-shadow: 0 0 15px rgba(0, 255, 136, 0.4);
+    transition: all 0.3s ease;
+}
+/* Pulse animation for system status */
+@keyframes pulse {
+    0% { opacity: 1; transform: scale(1); }
+    50% { opacity: 0.4; transform: scale(1.2); }
+    100% { opacity: 1; transform: scale(1); }
+}
+
+.animate-pulse {
+    animation: pulse 2s infinite ease-in-out;
+    box-shadow: 0 0 10px var(--primary-neon);
+}
+
+.bg-black { background-color: #050505 !important; }
+
+/* Metrics Visibility Fix */
+.display-4.mono {
+    color: var(--primary-neon) !important;
+    letter-spacing: -0.05em;
+    text-shadow: 0 0 20px rgba(0, 255, 136, 0.3);
+}
+
+.text-uppercase.tracking-widest.text-muted {
+    color: #a1a1a6 !important; /* Lighter grey for better contrast on black */
+    font-size: 0.75rem;
+    font-weight: 600;
+}
+
+/* Ensure the border between metrics is visible */
+.border-secondary {
+    border-color: rgba(255, 255, 255, 0.15) !important;
+}
+
+/* Bento Card Typography Fix */
+.bento-card h3, .bento-card h4 {
+    color: #ffffff !important; /* Pure white for headings */
+}
+
+.bento-card p, .bento-card li {
+    color: rgba(255, 255, 255, 0.7) !important; /* High-contrast silver for body text */
+    font-size: 0.95rem;
+}
+
+/* Fix for the list icons */
+.bento-card ul li i {
+    color: var(--primary-neon) !important;
+    filter: drop-shadow(0 0 5px rgba(0, 255, 136, 0.4));
+}
+
+/* Ensure the code snippet in the card is readable */
+.bento-card .bg-dark {
+    background-color: #050505 !important;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+/* Footer Link Interactions */
+.footer-link {
+    transition: all 0.3s ease;
+}
+
+.footer-link:hover {
+    color: var(--primary-neon) !important;
+    padding-left: 5px; /* Subtle movement effect */
+}
+
+/* Border visibility in footer */
+footer.border-top {
+    border-color: rgba(255, 255, 255, 0.1) !important;
+}
+
+/* Tech Badge Styling */
+.badge.mono {
+    font-family: 'Fira Code', monospace;
+    font-size: 0.7rem;
+    padding: 0.5em 1em;
+    border-radius: 2px;
+}
+
+/* Specific Badge Colors */
+.bg-info { background-color: #00d4ff !important; }
+.bg-primary { background-color: #3d5afe !important; }
+
+/* Ensuring code blocks stand out */
+code {
+    font-family: 'Fira Code', monospace;
+}
+
+/* Stack Grid Icon Glow */
+.bento-card i {
+    transition: all 0.4s ease;
+}
+
+.bento-card:hover i {
+    color: #ffffff !important;
+    text-shadow: 0 0 15px var(--primary-neon);
+    transform: translateY(-5px);
+}
+
+/* Italic font fallback for the Philosophy Section */
+.italic {
+    font-family: 'Playfair Display', serif; /* Or use a serif font for that editorial contrast */
+    font-style: italic;
+}
+
+/* Tech Form Overrides */
+.form-underline {
+    background: transparent;
+    border: none;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    color: white !important;
+    padding: 15px 0;
+    width: 100%;
+    outline: none;
+    transition: border-color 0.3s ease;
+}
+
+.form-underline:focus {
+    border-bottom: 1px solid var(--primary-neon);
+}
+
+.form-underline option {
+    background: #0a0a0c; /* Matches bg-dark */
+    color: white;
+}
+
+.form-underline::placeholder {
+    color: rgba(255, 255, 255, 0.3);
+}
