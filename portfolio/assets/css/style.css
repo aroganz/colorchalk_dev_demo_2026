@@ -1,0 +1,506 @@
+/* 1. SETUP & VARIABLES */
+:root {
+    --bg: #ffffff;
+    --text: #000000;
+    --accent: #0000ff;
+    --border: #e0e0e0;
+}
+
+* { 
+    margin: 0; 
+    padding: 0; 
+    box-sizing: border-box; 
+}
+
+body {
+    background: var(--bg);
+    color: var(--text);
+    font-family: 'Inter', sans-serif;
+    line-height: 1.2;
+    overflow-x: hidden;
+}
+
+/* 2. LAYOUT COMPONENTS */
+.hero {
+    height: 80vh; /* Increased height */
+    display: flex;
+    align-items: center;
+    padding: 100px 5% 0 5%; /* Top padding accounts for the fixed nav */
+}
+
+.intro-text {
+    font-size: 5vw;
+    font-weight: 300;
+    max-width: 900px;
+    letter-spacing: -0.02em;
+}
+
+.intro-text span {
+    font-style: italic;
+    color: var(--accent);
+}
+
+/* 3. PROJECT LIST */
+.project-list {
+    padding: 0 5% 20vh 5%;
+    position: relative;
+    z-index: 20; /* Sits above the preview layer */
+}
+
+.project-item {
+    padding: 60px 0;
+    border-top: 1px solid var(--border);
+    position: relative;
+}
+
+.project-item:last-child {
+    border-bottom: 1px solid var(--border);
+}
+
+.project-link {
+    text-decoration: none;
+    color: inherit;
+    display: block;
+}
+
+.index {
+    font-family: monospace;
+    font-size: 0.9rem;
+    display: block;
+    margin-bottom: 15px;
+    opacity: 0.6;
+}
+
+.project-title {
+    font-size: 7vw;
+    font-weight: 800;
+    text-transform: uppercase;
+    letter-spacing: -0.04em;
+    transition: transform 0.4s cubic-bezier(0.23, 1, 0.32, 1), color 0.3s ease;
+}
+
+.project-meta {
+    font-size: 1rem;
+    text-transform: uppercase;
+    opacity: 0.5;
+    margin-top: 15px;
+}
+
+/* 4. INTERACTIONS */
+.project-item:hover .project-title {
+    transform: translateX(30px);
+    color: var(--accent);
+}
+
+#hover-preview {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 350px;
+    height: 450px;
+    background-size: cover;
+    background-position: center;
+    background-color: #f0f0f0; /* Placeholder color */
+    pointer-events: none;
+    z-index: 10;
+    opacity: 0;
+    border-radius: 4px;
+    transition: opacity 0.4s ease;
+    will-change: transform; /* Performance optimization */
+}
+
+/* 1.5 NAVIGATION HEADER - SMART VERSION */
+.minimal-nav {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 40px 5%;
+    z-index: 1000;
+    transition: all 0.4s cubic-bezier(0.23, 1, 0.32, 1);
+    background: rgba(255, 255, 255, 0); /* Start fully transparent */
+}
+
+/* When the user scrolls down */
+.minimal-nav.scrolled {
+    padding: 20px 5%; /* Shrinks slightly for more screen real estate */
+    background: rgba(255, 255, 255, 0.85); /* Semi-transparent white */
+    backdrop-filter: blur(15px); /* The "Glass" effect */
+    -webkit-backdrop-filter: blur(15px);
+    border-bottom: 1px solid rgba(0, 0, 0, 0.05); /* Hairline separator */
+}
+
+.minimal-nav .logo {
+    font-weight: 900;
+    font-size: 1.4rem;
+    text-decoration: none;
+    color: #000;
+    letter-spacing: -0.02em;
+}
+
+.nav-links a {
+    text-decoration: none;
+    color: #000;
+    margin-left: 40px;
+    font-size: 0.85rem;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    font-weight: 600;
+}
+
+.nav-links a:hover {
+    opacity: 0.4;
+}
+
+/* 5. RECOGNITION SECTION */
+.recognition {
+    padding: 10vh 5%;
+    border-top: 1px solid var(--border);
+}
+
+.section-label {
+    font-size: 0.8rem;
+    text-transform: uppercase;
+    letter-spacing: 0.2em;
+    margin-bottom: 50px;
+    opacity: 0.5;
+}
+
+.award-item {
+    display: grid;
+    grid-template-columns: 100px 1fr auto;
+    padding: 25px 0;
+    border-bottom: 1px solid #f0f0f0;
+    font-size: 1.2rem;
+    transition: padding 0.3s ease;
+}
+
+.award-item:hover {
+    padding-left: 20px;
+    color: var(--accent);
+}
+
+/* 6. APPROACH SECTION */
+.approach {
+    padding: 15vh 5%;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 100px;
+}
+
+.approach-header h2 {
+    font-size: 3.5vw;
+    font-weight: 400;
+    line-height: 1.1;
+}
+
+.service {
+    margin-bottom: 60px;
+}
+
+.service h4 {
+    font-size: 0.9rem;
+    text-transform: uppercase;
+    margin-bottom: 20px;
+    color: var(--accent);
+}
+
+.service p {
+    font-size: 1.2rem;
+    line-height: 1.6;
+    opacity: 0.7;
+}
+
+/* 7. CONTACT CTA */
+.contact-cta {
+    padding: 20vh 5%;
+    text-align: center;
+}
+
+.big-mail-link {
+    font-size: 10vw;
+    font-weight: 800;
+    text-decoration: none;
+    color: var(--text);
+    letter-spacing: -0.05em;
+    transition: color 0.3s ease;
+}
+
+.big-mail-link:hover {
+    color: var(--accent);
+}
+
+.big-mail-link span {
+    display: inline-block;
+    transition: transform 0.3s ease;
+}
+
+.big-mail-link:hover span {
+    transform: translateX(30px);
+}
+/* CASE STUDY STYLES */
+.cs-hero {
+    padding: 150px 5% 50px 5%;
+}
+
+.cs-category {
+    text-transform: uppercase;
+    font-size: 0.8rem;
+    letter-spacing: 0.2em;
+    color: var(--accent);
+}
+
+.cs-title {
+    font-size: 10vw;
+    font-weight: 800;
+    margin: 20px 0;
+    letter-spacing: -0.05em;
+}
+
+.cs-tagline {
+    font-size: 1.5rem;
+    max-width: 600px;
+    opacity: 0.6;
+}
+
+.cs-main-image {
+    padding: 0 5%;
+    margin-bottom: 100px;
+}
+
+.cs-main-image img {
+    width: 100%;
+    height: 80vh;
+    object-fit: cover;
+    border-radius: 4px;
+}
+
+.cs-content {
+    padding: 0 5% 20vh 5%;
+    display: grid;
+    grid-template-columns: 1fr 2fr; /* 2026 split column style */
+    gap: 100px;
+}
+
+.info-block {
+    margin-bottom: 40px;
+}
+
+.info-block h5 {
+    text-transform: uppercase;
+    font-size: 0.7rem;
+    margin-bottom: 10px;
+    opacity: 0.4;
+}
+
+.narrative-section {
+    margin-bottom: 80px;
+}
+
+.narrative-section h3 {
+    font-size: 2rem;
+    margin-bottom: 20px;
+}
+
+.narrative-section p {
+    font-size: 1.4rem;
+    line-height: 1.6;
+    color: #444;
+}
+.cs-image-wrapper {
+    width: 100%;
+    height: 80vh; /* Cinematic height */
+    overflow: hidden;
+    margin-top: 60px;
+    background-color: #f0f0f0; /* Shimmer placeholder color */
+}
+
+.cs-image-wrapper img {
+    filter: grayscale(100%);
+    transition: filter 0.8s ease, transform 1.5s cubic-bezier(0.19, 1, 0.22, 1);
+}
+
+.cs-image-wrapper:hover img {
+    filter: grayscale(0%);
+    transform: scale(1.03);
+}
+/* FOOTER STYLES */
+.site-footer {
+    padding: 15vh 5% 5vh 5%;
+    background: #ffffff;
+    border-top: 1px solid var(--border);
+}
+
+.footer-cta {
+    margin-bottom: 15vh;
+}
+
+.cta-label {
+    display: block;
+    font-size: 0.9rem;
+    text-transform: uppercase;
+    letter-spacing: 0.2em;
+    opacity: 0.5;
+    margin-bottom: 20px;
+}
+
+.footer-main-link {
+    font-size: 8vw;
+    font-weight: 800;
+    text-decoration: none;
+    color: var(--text);
+    letter-spacing: -0.04em;
+    transition: color 0.4s ease;
+}
+
+.footer-main-link:hover {
+    color: var(--accent);
+}
+
+.footer-main-link span {
+    display: inline-block;
+    transition: transform 0.4s cubic-bezier(0.23, 1, 0.32, 1);
+}
+
+.footer-main-link:hover span {
+    transform: translateX(40px);
+}
+
+.footer-bottom {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+    font-size: 0.8rem;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+}
+
+.footer-col p {
+    margin-bottom: 5px;
+    opacity: 0.6;
+}
+
+.social-links a {
+    text-decoration: none;
+    color: var(--text);
+    margin-left: 30px;
+    font-weight: 600;
+    transition: opacity 0.3s ease;
+}
+
+.social-links a:hover {
+    opacity: 0.5;
+}
+
+/* Logo Styling */
+.logo {
+    font-weight: 900;
+    font-size: 1.4rem;
+    text-decoration: none;
+    color: var(--text);
+    letter-spacing: -0.02em;
+    text-transform: uppercase;
+}
+
+/* The 'i' Variant */
+.logo span, .copyright span {
+    color: var(--accent); /* This uses your #0000ff Blue */
+    text-transform: lowercase; /* Forces it to stay lowercase even if parent is uppercase */
+    font-family: serif; /* Mixing a serif 'i' with sans-serif 'BEND T' is a high-end design trick */
+    font-style: italic;
+    margin: 0 -1px; /* Tighter kerning for the variant letter */
+}
+
+/* Footer specific logo/text tweak */
+.copyright {
+    font-weight: 700;
+    letter-spacing: 0.05em;
+}
+
+/* ABOUT PAGE STYLES */
+.about-hero {
+    padding: 150px 5% 100px 5%;
+}
+
+.about-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 50px;
+}
+
+.lead-text {
+    font-size: 2rem;
+    line-height: 1.4;
+    margin-bottom: 60px;
+    letter-spacing: -0.02em;
+}
+
+.stack-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 40px;
+}
+
+.stack-item h4 {
+    font-size: 0.8rem;
+    text-transform: uppercase;
+    color: var(--accent);
+    margin-bottom: 15px;
+    letter-spacing: 0.1em;
+}
+
+.stack-item p {
+    font-size: 1.1rem;
+    opacity: 0.7;
+    line-height: 1.5;
+}
+
+/* MODERN SHOWCASE GRID */
+.visual-showcase {
+    padding: 0 5% 15vh 5%;
+}
+
+.bento-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    grid-auto-rows: 300px;
+    gap: 20px;
+}
+
+.grid-item {
+    overflow: hidden;
+    background: #f5f5f5;
+    border-radius: 4px;
+}
+
+.grid-item img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    filter: grayscale(100%);
+    transition: all 0.6s cubic-bezier(0.23, 1, 0.32, 1);
+}
+
+.grid-item:hover img {
+    filter: grayscale(0%);
+    transform: scale(1.05);
+}
+
+/* Grid Variations */
+.grid-item.tall {
+    grid-row: span 2;
+}
+
+.grid-item.wide {
+    grid-column: span 2;
+}
+
+/* Responsive Grid */
+@media (max-width: 900px) {
+    .about-grid { grid-template-columns: 1fr; }
+    .bento-grid { grid-template-columns: repeat(2, 1fr); }
+    .grid-item.wide { grid-column: span 1; }
+}
