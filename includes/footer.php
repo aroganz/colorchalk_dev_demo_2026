@@ -17,31 +17,55 @@
 <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
 
 <script>
-// Swiper Configuration
-var swiper = new Swiper(".mySwiper", { 
-    effect: "fade", 
-    fadeEffect: { crossFade: true },
-    loop: true, 
-    autoplay: { delay: 5000, disableOnInteraction: false } 
-});
+document.addEventListener('DOMContentLoaded', function() {
+    
+    // 1. Swiper Configuration (Only runs if .mySwiper exists)
+    const swiperElement = document.querySelector('.mySwiper');
+    if (swiperElement) {
+        const swiper = new Swiper(".mySwiper", { 
+            effect: "fade", 
+            fadeEffect: { crossFade: true },
+            loop: true,
+            speed: 1000, // Smoother transition
+            autoplay: { 
+                delay: 5000, 
+                disableOnInteraction: false 
+            },
+            // Ensuring the slide content animates correctly
+            on: {
+                init: function () {
+                    this.slides[this.activeIndex].classList.add('active-slide');
+                },
+                slideChangeTransitionStart: function () {
+                    this.slides.forEach(slide => slide.classList.remove('active-slide'));
+                    this.slides[this.activeIndex].classList.add('active-slide');
+                }
+            }
+        });
+    }
 
-// Scroll Reveal Logic (Intersection Observer)
-const revealObserver = new IntersectionObserver((entries) => {
-    entries.forEach(entry => { 
-        if (entry.isIntersecting) entry.target.classList.add('active'); 
+    // 2. Scroll Reveal Logic (Intersection Observer)
+    const revealObserver = new IntersectionObserver((entries) => {
+        entries.forEach(entry => { 
+            if (entry.isIntersecting) {
+                entry.target.classList.add('active'); 
+                // Stop observing once revealed for performance
+                revealObserver.unobserve(entry.target);
+            }
+        });
+    }, { threshold: 0.15 });
+
+    document.querySelectorAll('.reveal').forEach(el => revealObserver.observe(el));
+
+    // 3. Scroll Progress Bar
+    window.addEventListener('scroll', function() {
+        let winScroll = document.body.scrollTop || document.documentElement.scrollTop;
+        let height = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+        let scrolled = (winScroll / height) * 100;
+        let bar = document.getElementById("scrollIndicator");
+        if(bar) bar.style.width = scrolled + "%";
     });
-}, { threshold: 0.1 });
-
-document.querySelectorAll('.reveal').forEach(el => revealObserver.observe(el));
-
-// Scroll Progress Bar
-window.onscroll = function() {
-    let winScroll = document.body.scrollTop || document.documentElement.scrollTop;
-    let height = document.documentElement.scrollHeight - document.documentElement.clientHeight;
-    let scrolled = (winScroll / height) * 100;
-    let bar = document.getElementById("scrollIndicator");
-    if(bar) bar.style.width = scrolled + "%";
-};
+});
 </script>
 
 </body>
