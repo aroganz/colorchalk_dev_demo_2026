@@ -1,0 +1,578 @@
+/* --- CORE SETUP --- */
+:root {
+    --bg-main: #cececed6;      /* Your new light background */
+    --bg-accent: #e0e0e0;     /* Slightly darker for section depth */
+    --electric: #0047FF;      /* Brand accent */
+    --text-primary: #1a1a1a;  /* Dark charcoal for readability */
+    --text-dim: #666666;
+    --border-subtle: rgba(0, 0, 0, 0.1);
+}
+
+* { box-sizing: border-box; }
+
+body {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+    margin: 0;
+    padding: 0;
+    background: var(--bg-main);
+    color: var(--text-primary);
+    font-family: 'Inter', sans-serif;
+    line-height: 1.6;
+}
+
+main { flex: 1; }
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 5%;
+}
+
+/* --- REFINED HEADER --- */
+/* --- DYNAMIC HEADER LOGIC --- */
+.site-header {
+    position: fixed;
+    top: 0;
+    width: 100%;
+    z-index: 1000;
+    padding: 30px 0;
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* Default state: White text for visibility over the Hero Scrim */
+.site-header .nav-item, 
+.site-header .brand-logo {
+    color: #ffffff;
+}
+
+.site-header .nav-btn {
+    border-color: rgba(255, 255, 255, 0.5);
+    color: #ffffff;
+}
+
+/* SCROLLED STATE: Dark text for visibility over light bg */
+.site-header.scrolled {
+    padding: 15px 0;
+    background: rgba(206, 206, 206, 0.95); /* Matches your #cececed6 */
+    backdrop-filter: blur(10px);
+    border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+}
+
+.site-header.scrolled .nav-item,
+.site-header.scrolled .brand-logo {
+    color: #1a1a1a; /* Dark charcoal */
+}
+
+.site-header.scrolled .nav-btn {
+    border: 1px solid var(--text-primary);
+    background: transparent;
+    color: var(--text-primary);
+}
+.site-header.scrolled .nav-btn:hover {
+    background: var(--text-primary);
+    color: #cececed6; /* Flips to your background color on hover */
+}
+
+.site-header.scrolled .brand-logo .thin {
+    color: rgba(0, 0, 0, 0.5);
+}
+
+/* Logo specific fix to ensure dot stays blue */
+.brand-logo .dot {
+    color: var(--electric) !important;
+}
+
+.nav-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 5%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.nav-links {
+    display: flex;
+    align-items: center;
+    gap: 40px;
+}
+
+.nav-item {
+    color: var(--text-primary);
+    text-decoration: none;
+    font-size: 0.85rem;
+    font-weight: 500;
+    letter-spacing: 1px;
+    opacity: 0.8;
+    transition: 0.3s;
+}
+
+.nav-item:hover { opacity: 1; color: var(--electric); }
+
+.nav-btn {
+    border: 1px solid var(--text-primary);
+    padding: 8px 20px;
+    font-weight: 700;
+    font-size: 0.75rem;
+    text-transform: uppercase;
+    text-decoration: none;
+    color: var(--text-primary);
+    transition: 0.3s;
+}
+
+.nav-btn:hover {
+    background: var(--text-primary);
+    color: #fff;
+}
+
+/* --- BRAND LOGO --- */
+.brand-logo {
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 900;
+    font-size: 1.3rem;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    color: var(--text-primary);
+    text-decoration: none;
+    margin-left: -2px;
+}
+
+.brand-logo .thin { font-weight: 200; opacity: 0.6; margin-left: 4px; }
+.brand-logo .dot { color: var(--electric); }
+
+/* --- HERO SECTION --- */
+.hero-backdrop {
+    height: 100vh;
+    background-size: cover;
+    background-position: center;
+    display: flex;
+    align-items: center;
+    position: relative;
+    color: #fff; /* Keeping Hero text white for contrast against the image */
+}
+
+.hero-backdrop::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    /* This adds a darker "scrim" at the top to protect the white menu */
+    background: linear-gradient(to bottom, rgba(0,0,0,0.6) 0%, rgba(0,0,0,0) 20%),
+                linear-gradient(to right, rgba(0,0,0,0.8) 20%, rgba(0,0,0,0.2) 100%);
+    z-index: 1;
+}
+
+.hero-content {
+    position: relative;
+    z-index: 2;
+    max-width: 800px;
+}
+
+.hero-content h1 {
+    font-family: 'Montserrat', sans-serif;
+    font-size: clamp(3rem, 8vw, 6rem);
+    line-height: 0.9;
+    font-weight: 900;
+    margin: 20px 0;
+}
+
+.btn-impact {
+    background: var(--electric);
+    color: #fff;
+    padding: 18px 45px;
+    font-weight: 800;
+    text-transform: uppercase;
+    text-decoration: none;
+    display: inline-block;
+    transition: 0.3s;
+}
+
+.btn-impact:hover { transform: translateY(-3px); box-shadow: 0 10px 20px rgba(0,71,255,0.2); }
+
+
+/* --- ABOUT PAGE SPECIFICS --- */
+.about-hero {
+    padding: 180px 0 100px;
+    text-align: center;
+}
+
+.about-hero h1 {
+    font-size: clamp(3rem, 7vw, 5.5rem);
+    margin: 20px 0;
+    line-height: 1;
+}
+
+.lead-text {
+    font-size: 1.4rem;
+    color: var(--text-dim);
+    max-width: 700px;
+    margin: 0 auto;
+}
+
+/* Contrast Grid */
+.contrast-section {
+    padding: 100px 0;
+    background: var(--bg-accent);
+}
+
+.contrast-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 30px;
+}
+
+.contrast-box {
+    padding: 50px;
+    background: rgba(255, 255, 255, 0.4);
+    border: 1px solid var(--border-subtle);
+}
+
+.contrast-box h4 {
+    font-size: 1.2rem;
+    margin-bottom: 25px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+.contrast-box ul {
+    list-style: none;
+    padding: 0;
+}
+
+.contrast-box ul li {
+    margin-bottom: 15px;
+    padding-left: 25px;
+    position: relative;
+    font-size: 0.95rem;
+}
+
+.contrast-box.warning ul li::before { content: '✕'; position: absolute; left: 0; color: #ff4d4d; }
+.contrast-box.success ul li::before { content: '✓'; position: absolute; left: 0; color: var(--electric); }
+
+/* About Pillars */
+.logic-pillars {
+    padding: 120px 0;
+}
+
+.section-title {
+    font-size: 2.5rem;
+    margin-bottom: 60px;
+}
+
+.about-pillars-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 40px;
+}
+
+.about-pillar h3 {
+    font-size: 1.1rem;
+    text-transform: uppercase;
+    color: var(--electric);
+    margin-bottom: 20px;
+}
+
+@media (max-width: 768px) {
+    .contrast-grid, .about-pillars-grid { grid-template-columns: 1fr; }
+}
+
+/* --- PROGRAMS PAGE STYLES --- */
+.programs-hero {
+    padding: 160px 0 80px;
+    text-align: center;
+}
+
+.program-tier {
+    padding: 100px 0;
+    border-top: 1px solid var(--border-subtle);
+}
+
+.program-tier.alt-bg {
+    background: var(--bg-accent);
+}
+
+.tier-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 80px;
+    align-items: center;
+}
+
+.tier-grid.rev {
+    direction: rtl; /* Flip content for alternating look */
+}
+
+.tier-grid.rev .tier-content {
+    direction: ltr; /* Reset text direction */
+}
+
+.tier-label {
+    color: var(--electric);
+    text-transform: uppercase;
+    font-weight: 700;
+    letter-spacing: 2px;
+    font-size: 0.8rem;
+    display: block;
+    margin-bottom: 10px;
+}
+
+.tier-content h2 {
+    font-size: 2.8rem;
+    margin-bottom: 25px;
+    line-height: 1.1;
+}
+
+.tier-features {
+    list-style: none;
+    padding: 0;
+    margin: 30px 0;
+}
+
+.tier-features li {
+    padding: 8px 0;
+    padding-left: 30px;
+    position: relative;
+    color: var(--text-dim);
+}
+
+.tier-features li::before {
+    content: '→';
+    position: absolute;
+    left: 0;
+    color: var(--electric);
+}
+
+.btn-tier {
+    display: inline-block;
+    padding: 15px 35px;
+    border: 1px solid var(--text-primary);
+    text-decoration: none;
+    color: var(--text-primary);
+    font-weight: 800;
+    text-transform: uppercase;
+    font-size: 0.8rem;
+    transition: 0.3s;
+}
+
+.btn-tier:hover {
+    background: var(--text-primary);
+    color: var(--bg-main);
+}
+
+/* Abstract Visual Box */
+.abstract-box {
+    width: 100%;
+    height: 400px;
+    background: #c4c4c4;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 900;
+    letter-spacing: 5px;
+    color: #cecece;
+    border: 1px solid var(--border-subtle);
+}
+
+.tier-visual {
+    width: 100%;
+    height: 500px;
+    overflow: hidden;
+    border: 1px solid var(--border-subtle);
+    background: #000; /* Backdrop for the image blend */
+}
+
+.program-img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+    /* Softens the image to fit the grey theme */
+    filter: grayscale(100%) brightness(0.9) contrast(1.1);
+    opacity: 0.8; 
+    transition: all 0.6s cubic-bezier(0.23, 1, 0.32, 1);
+}
+
+.program-tier:hover .program-img {
+    filter: grayscale(0%) brightness(1);
+    opacity: 1;
+    transform: scale(1.03);
+}
+
+/* --- CONTACT PAGE STYLES --- */
+.contact-page {
+    padding: 160px 0 100px;
+}
+
+.contact-grid {
+    display: grid;
+    grid-template-columns: 1fr 1.2fr;
+    gap: 80px;
+    align-items: start;
+}
+
+.contact-info h1 {
+    font-size: clamp(2.5rem, 5vw, 4rem);
+    margin: 20px 0;
+}
+
+.expectation-box {
+    margin-top: 50px;
+    padding: 30px;
+    background: rgba(0, 0, 0, 0.03);
+    border-left: 3px solid var(--electric);
+}
+
+.expectation-box h4 {
+    margin-bottom: 15px;
+    font-size: 0.9rem;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+.expectation-box ol {
+    padding-left: 20px;
+    color: var(--text-dim);
+    font-size: 0.95rem;
+}
+
+.expectation-box li { margin-bottom: 10px; }
+
+/* Form Styling */
+.contact-form-wrapper {
+    background: #fff;
+    padding: 50px;
+    border: 1px solid var(--border-subtle);
+    box-shadow: 0 30px 60px rgba(0,0,0,0.05);
+}
+
+.form-group {
+    margin-bottom: 25px;
+}
+
+.form-group label {
+    display: block;
+    font-size: 0.75rem;
+    text-transform: uppercase;
+    font-weight: 700;
+    margin-bottom: 10px;
+    letter-spacing: 1px;
+}
+
+.form-group input, 
+.form-group select, 
+.form-group textarea {
+    width: 100%;
+    padding: 15px;
+    border: 1px solid #ddd;
+    background: #f9f9f9;
+    font-family: inherit;
+    font-size: 1rem;
+    transition: 0.3s;
+}
+
+.form-group input:focus {
+    border-color: var(--electric);
+    outline: none;
+    background: #fff;
+}
+
+.btn-submit {
+    width: 100%;
+    background: var(--text-primary);
+    color: #fff;
+    padding: 20px;
+    border: none;
+    font-weight: 800;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.btn-submit:hover {
+    background: var(--electric);
+    transform: translateY(-2px);
+}
+
+@media (max-width: 992px) {
+    .contact-grid { grid-template-columns: 1fr; gap: 60px; }
+}
+/* --- PILLARS & METHODOLOGY --- */
+.pillars-section {
+    padding: 120px 0;
+    border-top: 1px solid var(--border-subtle);
+}
+
+.pillars-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 60px;
+}
+
+.pillar h3 {
+    font-weight: 800;
+    font-size: 1.5rem;
+    margin-bottom: 15px;
+    color: var(--text-primary);
+}
+
+.pillar p { color: var(--text-dim); }
+
+.method-section {
+    background: var(--bg-accent);
+    padding: 160px 0;
+    border-top: 1px solid var(--border-subtle);
+    overflow: hidden;
+}
+
+.massive-text {
+    font-family: 'Montserrat', sans-serif;
+    font-size: clamp(2.5rem, 8vw, 5.5rem); 
+    font-weight: 900;
+    line-height: 1.1;
+    margin-bottom: 40px;
+    text-transform: uppercase;
+}
+
+.outline {
+    -webkit-text-stroke: 1px var(--text-primary);
+    color: transparent;
+}
+
+/* --- FOOTER --- */
+.site-footer {
+    padding: 80px 0 40px;
+    border-top: 1px solid var(--border-subtle);
+    background: #c4c4c4; /* Slightly deeper than main bg to anchor the page */
+}
+
+.footer-content {
+    display: grid;
+    grid-template-columns: 1.5fr repeat(3, 1fr);
+    gap: 40px;
+    padding-bottom: 60px;
+}
+
+.footer-nav-col h4 {
+    font-size: 0.75rem;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    margin-bottom: 25px;
+    color: var(--text-primary);
+}
+
+.footer-nav-col a {
+    display: block;
+    color: var(--text-dim);
+    text-decoration: none;
+    font-size: 0.9rem;
+    margin-bottom: 12px;
+    transition: 0.3s;
+}
+
+.footer-nav-col a:hover { color: var(--electric); }
+
+@media (max-width: 992px) {
+    .footer-content { grid-template-columns: 1fr 1fr; }
+}
