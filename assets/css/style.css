@@ -25,7 +25,23 @@ body {
 }
 
 .nav-logo { height: 32px; width: auto; }
+.nav-logo-img {
+    height: 40px; /* Adjust this height to fit your preference */
+    width: auto;
+    display: block;
+    transition: transform 0.3s ease;
+}
 
+.navbar-brand:hover .nav-logo-img {
+    transform: scale(1.05); /* Slight pop effect on hover */
+}
+
+/* Mobile adjustment */
+@media (max-width: 768px) {
+    .nav-logo-img {
+        height: 32px;
+    }
+}
 .menu-toggle { 
     background: none; 
     border: none; 

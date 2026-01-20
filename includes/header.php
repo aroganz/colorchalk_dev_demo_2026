@@ -3,6 +3,10 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta property="og:title" content="ColorChalk Studio | Art Director & Developer">
+<meta property="og:description" content="Independent Art Director and Developer based in Chennai. Bridging creative vision and deliverable code.">
+<meta property="og:image" content="https://www.colorchalk.com/assets/img/your-preview-image.jpg">
+<meta property="og:url" content="https://www.colorchalk.com">
     <title>Amarnath Jaganathan | Art Director & Developer</title>
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-XXXXXXXXXX"></script>
     <script>
@@ -21,7 +25,9 @@
 
 <nav class="navbar navbar-expand-lg fixed-top py-4">
     <div class="container">
-        <a class="navbar-brand fw-bold" href="index.php">AMARNATH.</a>
+        <a class="navbar-brand" href="index.php">
+    <img src="assets/img/color-chalk-logo.jpg" alt="ColorChalk Logo" class="nav-logo-img">
+</a>
         
         <div class="d-flex align-items-center">
             <ul class="navbar-nav flex-row gap-4 me-4 d-none d-lg-flex">
