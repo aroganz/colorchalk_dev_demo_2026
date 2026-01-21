@@ -1,8 +1,7 @@
 <?php include 'includes/header.php'; ?>
-
 <div class="swiper mySwiper">
     <div class="swiper-wrapper">
-         <div class="swiper-slide">
+         <div class="swiper-slide" fetchpriority="high">
             <div class="container">
                 <div class="slide-content">
                     <h1 class="hero-title">CODE<br><span class="accent-text">PERFECT.</span></h1>
@@ -57,12 +56,12 @@
     </div>
 </section>
 
-<section class="container reveal">
+<section class="container">
     <div class="client-logo-row">
         <span class="trusted-by-label text-center">Trusted By</span>
         <div class="logo-grid">
             <div class="client-logo-item">
-                <img src="assets/img/green-mushroom.svg" alt="Green Mushroom Glebe">
+                <img src="assets/img/green-mushroom.svg" alt="Green Mushroom Glebe" loading="lazy">
             </div>
             <div class="client-logo-item">
                 <img src="assets/img/seyre-global-logo.svg" alt="SeyRe Global">

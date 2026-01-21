@@ -1,12 +1,16 @@
 <?php
-$host = 'localhost';
-$user = 'root';
-$pass = '';
-$db   = 'colorchalk_db_2026';
+// Prevent 500 error by catching the exception
+mysqli_report(MYSQLI_REPORT_OFF); 
 
-$conn = new mysqli($host, $user, $pass, $db);
+$host = "localhost";
+$user = "Amarnath";           // Updated to your verified name
+$pass = "@marnath1969$%"; 
+$dbname = "colorchalk_db"; 
 
-if ($conn->connect_error) {
-    die("Connection failed: " . $conn->connect_error);
+$conn = mysqli_connect($host, $user, $pass, $dbname);
+
+if (!$conn) {
+    // This will print the error on the screen so we can see it
+    die("Database Connection Failed: " . mysqli_connect_error());
 }
 ?>

@@ -1,0 +1,81 @@
+/* --- PASTEL PALETTE SCHEMA --- */
+:root {
+    --pastel-peach: #FFF5F2;    /* Main Background */
+    --pastel-sage: #E8F0E6;     /* Secondary Background */
+    --pastel-sky: #EBF4FF;      /* Accent Background */
+    --action-rose: #FF8A8A;     /* Primary Action / Buttons */
+    --text-charcoal: #333333;   /* High Readability Text */
+    --text-muted: #7A7A7A;
+}
+
+body {
+    background-color: var(--pastel-peach);
+    color: var(--text-charcoal);
+    font-family: 'Inter', sans-serif;
+}
+
+/* Override existing classes with the new palette */
+.bg-stone { background-color: var(--pastel-peach) !important; }
+.bg-sage { background-color: var(--pastel-sage) !important; }
+
+/* Rounded design for a "soft" non-profit feel */
+.bento-item, .portfolio-card img, .btn {
+    border-radius: 24px !important;
+}
+
+/* Primary Action Button */
+.btn-talk-footer, .btn-primary-charity {
+    background: var(--action-rose) !important;
+    color: white !important;
+    border: none;
+    padding: 18px 45px;
+    border-radius: 50px !important;
+    font-weight: 700;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.btn-talk-footer:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 10px 20px rgba(255, 138, 138, 0.3);
+}
+
+/* --- PASTEL ICON BOXES --- */
+.icon-box {
+    width: 60px;
+    height: 60px;
+    border-radius: 18px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 25px;
+    transition: transform 0.3s ease;
+}
+
+.reveal:hover .icon-box {
+    transform: scale(1.1) rotate(5deg);
+}
+
+/* Specific Pastel Backgrounds for Icons */
+.icon-water { background-color: #EBF4FF; color: #5D9CEC; }
+.icon-edu { background-color: #E8F0E6; color: #8CC152; }
+.icon-health { background-color: #FFF3CD; color: #F6BB42; }
+.icon-growth { background-color: #F8D7DA; color: #ED5565; }
+
+/* Ensure Service Images always have height */
+.rounded-5.overflow-hidden {
+    min-height: 400px; /* Safety fallback */
+    background: var(--pastel-peach); /* Soft placeholder while loading */
+    display: block;
+    width: 100%;
+}
+
+.object-fit-cover {
+    width: 100% !important;
+    height: 100% !important;
+    object-fit: cover;
+    object-position: center;
+}
+.reveal img {
+    opacity: 1 !important;
+    visibility: visible !important;
+}

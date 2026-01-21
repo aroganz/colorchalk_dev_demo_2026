@@ -1,0 +1,74 @@
+/* --- REAL ESTATE / EDITORIAL SCHEMA --- */
+:root {
+    --estate-dark: #1A1A1A;     /* Charcoal */
+    --estate-gold: #C5A059;     /* Soft Champagne Gold */
+    --estate-light: #F9F7F2;    /* Warm Paper White */
+    --text-muted: #666666;
+}
+
+body {
+    background-color: var(--estate-light);
+    color: var(--estate-dark);
+    font-family: 'Inter', sans-serif;
+}
+
+/* Luxury Card Style */
+.property-card {
+    background: white;
+    border: none;
+    transition: transform 0.5s cubic-bezier(0.165, 0.84, 0.44, 1);
+}
+
+.property-card:hover {
+    transform: translateY(-10px);
+}
+
+.btn-estate {
+    background-color: var(--estate-dark);
+    color: white;
+    border-radius: 0;
+    padding: 12px 30px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    font-size: 0.75rem;
+    font-weight: 700;
+}
+/* Smooth Hover Effect for Luxury Aesthetic */
+.transition-img {
+    transition: transform 1.5s ease;
+}
+.overflow-hidden:hover .transition-img {
+    transform: scale(1.05);
+}
+.filter-btn {
+    border: none;
+    background: none;
+    padding-bottom: 8px;
+    font-size: 0.75rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    color: #999;
+    transition: all 0.3s ease;
+    border-bottom: 2px solid transparent;
+}
+
+.filter-btn.active {
+    color: var(--estate-dark);
+    border-bottom: 2px solid var(--estate-dark);
+}
+
+/* Animation for Filtering */
+.filter-item {
+    display: block;
+    animation: fadeIn 0.6s ease forwards;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+.hide {
+    display: none !important;
+}

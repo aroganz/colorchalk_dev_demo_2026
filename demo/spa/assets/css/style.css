@@ -1,0 +1,39 @@
+/* --- SPA & WELLNESS SCHEMA --- */
+:root {
+    --zen-oat: #F9F7F2;      /* Main Background */
+    --zen-mist: #E8EBE9;     /* Secondary / Treatment Cards */
+    --zen-sage: #9FAF9D;     /* Accent Color */
+    --zen-gold: #C5A059;     /* Membership / Premium CTA */
+    --text-stone: #4A4A4A;
+}
+
+body {
+    background-color: var(--zen-oat);
+    color: var(--text-stone);
+    letter-spacing: -0.01em;
+}
+
+/* Treatment Card Styling */
+.treatment-card {
+    background: white;
+    border-radius: 40px 40px 10px 10px;
+    overflow: hidden;
+    transition: all 0.5s ease;
+    border: 1px solid rgba(0,0,0,0.03);
+}
+
+.treatment-card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 20px 40px rgba(159, 175, 157, 0.1);
+}
+
+/* Membership Badge */
+.badge-zen {
+    background-color: var(--zen-sage);
+    color: white;
+    padding: 8px 20px;
+    border-radius: 50px;
+    font-size: 0.75rem;
+    text-uppercase;
+    letter-spacing: 2px;
+}

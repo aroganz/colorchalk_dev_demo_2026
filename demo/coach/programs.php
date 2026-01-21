@@ -87,7 +87,7 @@
                     <a href="contact.php" class="btn-tier">Book Your Day</a>
                 </div>
                 <div class="tier-visual">
-                    <div class="abstract-box">INTENSIVE</div>
+                <img src="https://images.pexels.com/photos/1181595/pexels-photo-1181595.jpeg" alt="Blueprint Logic" class="program-img">
                 </div>
             </div>
         </div>

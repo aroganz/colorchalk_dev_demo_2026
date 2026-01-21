@@ -1,0 +1,86 @@
+/* --- CORPORATE BIZ SCHEMA --- */
+:root {
+    --corp-navy: #0F172A;      /* Trust & Authority */
+    --corp-blue: #2563EB;      /* Action & Tech */
+    --corp-slate: #F8FAFC;     /* Backgrounds */
+    --text-main: #1E293B;
+    --accent-silver: #E2E8F0;
+}
+
+body {
+    background-color: white;
+    color: var(--text-main);
+    font-family: 'Inter', sans-serif;
+}
+
+/* Sharp Corporate UI */
+.stat-card {
+    border-left: 4px solid var(--corp-blue);
+    background: var(--corp-slate);
+    padding: 2rem;
+    transition: all 0.3s ease;
+}
+
+.case-study-card {
+    border: 1px solid var(--accent-silver);
+    border-radius: 0; /* Sharp edges for corporate feel */
+    transition: all 0.4s ease;
+}
+
+.case-study-card:hover {
+    box-shadow: 0 20px 40px rgba(15, 23, 42, 0.08);
+    border-color: var(--corp-blue);
+}
+/* CSS Hamburger Icon - 100% Reliable */
+
+.navbar {
+    overflow-x: hidden; /* Prevents anything from pushing the page wide */
+}
+
+@media (max-width: 991.98px) {
+    .navbar > .container {
+        /* Reset all Bootstrap container defaults */
+        display: flex !important;
+        flex-direction: row !important;
+        justify-content: space-between !important;
+        align-items: center !important;
+        width: 100% !important;
+        max-width: 100vw !important;
+        padding-left: 15px !important;
+        padding-right: 15px !important;
+        margin: 0 !important;
+        position: relative !important;
+        left: 0 !important;
+    }
+
+    /* Ensure the Brand doesn't take up too much space */
+    .navbar-brand {
+        margin-right: 0 !important;
+        font-size: 1.25rem !important;
+        flex-shrink: 1 !important;
+    }
+
+    /* Force the toggler to stay inside the padding */
+    .navbar-toggler {
+        display: block !important;
+        margin-right: 0 !important;
+        padding: 10px !important; /* Larger hit area, zero offset */
+        z-index: 1050;
+    }
+}
+
+/* 100% Visible CSS Icon */
+.custom-toggler-icon {
+    width: 24px;
+    height: 18px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+.custom-toggler-icon span {
+    display: block;
+    width: 100%;
+    height: 3px;
+    background-color: #0F172A; /* corp-navy */
+    border-radius: 4px;
+}
